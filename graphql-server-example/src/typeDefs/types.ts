@@ -1,12 +1,16 @@
+const { gql } = require('apollo-server');
+
 const types = gql`
-  type Pokemon {
-    pokedex_number: Int!
+  type Fruit {
+    id: ID!
     name: String
-    is_legendary: Boolean
-    type1: String
-    type2: String
-    abilities: String[]
-    generation: Int
+    nutritions: Nutritions
   }
-`
+
+  type Nutritions {
+    calories: String
+    sugar: String
+  }
+`;
+
 module.exports = types;
