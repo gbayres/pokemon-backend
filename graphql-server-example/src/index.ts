@@ -1,5 +1,5 @@
 require("dotenv").config();
-const mongoose = require("mongoose");
+import { connect } from 'mongoose';
 import { ApolloServer } from 'apollo-server';
 import pokemonResolver from './resolvers/pokemonResolver';
 import { typeDefs } from './typeDefs';
@@ -11,12 +11,8 @@ const db = {
    name: process.env.DB_NAME,
 };
 const dbUri = `mongodb+srv://${db.user}:${db.pass}@${db.host}/${db.name}?retryWrites=true&w=majority`;
-const dbOptions = {
-   useNewUrlParser: true,
-   useUnifiedTopology: true,
-};
-mongoose
-   .connect(dbUri, dbOptions)
+
+connect(dbUri)
    .then(() => console.log("Database connected"))
    .catch((error: string) => console.log("Databased failed: ", error));
 // GraphQL

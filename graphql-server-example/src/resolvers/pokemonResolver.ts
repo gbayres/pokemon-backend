@@ -1,5 +1,4 @@
 import { PokemonInterface } from "../typeDefs/types";
-
 import Pokemon from '../models/Pokemon';
 
 const pokemonResolver = {

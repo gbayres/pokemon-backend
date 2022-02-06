@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+import { Schema, model } from 'mongoose';
+import { PokemonInterface } from '../typeDefs/types';
 
-const PokemonSchema = mongoose.Schema({
+const PokemonSchema = new Schema<PokemonInterface>({
   pokedex_number: Number,
   name: String,
   type1: String,
@@ -10,4 +11,4 @@ const PokemonSchema = mongoose.Schema({
   abilities: [String],
 });
 
-export default mongoose.model("Pokemon", PokemonSchema);
+export default model("Pokemon", PokemonSchema);
