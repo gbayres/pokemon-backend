@@ -13,7 +13,7 @@ const pokemonResolver = {
   },
   Mutation: {
     async createPokemon(_: string, { pokemon }: { pokemon: PokemonInterface }) {
-      const newPokemon = await new Pokemon(pokemon);
+      const newPokemon = new Pokemon(pokemon);
       return await newPokemon.save();
     },
     async updatePokemon(_: string, { id, pokemon }: { id: string, pokemon: PokemonInterface }) {
