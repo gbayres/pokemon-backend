@@ -1,9 +1,15 @@
 import { gql } from 'apollo-server';
 
 export const query = gql`
+
+   input iChooseYouInput {
+     id: ID!
+   }
+
    type Query {
       pokemons: [Pokemon]
       pokemon(id: ID!): Pokemon
+      iChooseYou(id: ID!): String
    }
 
    type Pokemon {
@@ -14,5 +20,6 @@ export const query = gql`
     is_legendary: Boolean,
     generation: String,
     abilities: [String],
+    cebesta: String,
    }
 `;

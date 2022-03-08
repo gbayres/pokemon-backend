@@ -10,6 +10,12 @@ const pokemonResolver = {
     async pokemon(_: string, { id }: { id: string }) {
       return await Pokemon.findById(id);
     },
+    async iChooseYou(_: any, { id }: { id: string }, { statement } : { statement: string }) {
+      const chosen = await Pokemon.findById(id);
+      if (chosen) {
+        return chosen.name + statement;
+      } return "MissingNo";
+    },
   },
   Mutation: {
     async createPokemon(_: string, { pokemon }: { pokemon: PokemonInterface }) {
@@ -23,6 +29,11 @@ const pokemonResolver = {
     },
     async deletePokemon(_: string, { id }: { id: string }) {
       return await Pokemon.findByIdAndRemove(id);
+    },
+  },
+  Pokemon: {
+    async cebesta(parent: PokemonInterface) {
+      return parent.name
     },
   },
 };
